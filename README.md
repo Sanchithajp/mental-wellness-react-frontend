@@ -4,14 +4,14 @@ A modern mental wellness application built with Next.js, featuring meditation, b
 
 ## Features
 
-- 🧘 Meditation sessions
-- 🌬️ Breathing exercises
-- 💬 AI-powered chatbot (powered by Groq API)
-- 🎬 ASMR videos from YouTube (reels-style interface)
-- 🎮 Wellness games
-- 📊 Mood tracking
-- 🎵 Playlists
-- 📚 Resources
+- Meditation sessions
+- Breathing exercises
+- AI-powered chatbot (powered by Groq API)
+- ASMR videos from YouTube (reels-style interface)
+- Wellness games
+- Mood tracking
+- Playlists
+- Resources
 
 ## Prerequisites
 

@@ -1,0 +1,275 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to high-intensity cosmic thermal palette matching the reference image */
+  --background: oklch(12% 0.04 250); /* Deep midnight background */
+  --foreground: oklch(98% 0.01 250); /* Bright white for high contrast */
+  --card: oklch(100% 0 0 / 0.05); /* Transparent glassmorphism */
+  --card-foreground: oklch(98% 0.01 250);
+  --popover: oklch(15% 0.04 250);
+  --popover-foreground: oklch(98% 0.01 250);
+  --primary: oklch(65% 0.25 300); /* Vibrant violet/purple */
+  --primary-foreground: oklch(100% 0 0);
+  --secondary: oklch(65% 0.28 340); /* Intense magenta */
+  --secondary-foreground: oklch(100% 0 0);
+  --muted: oklch(25% 0.05 250);
+  --muted-foreground: oklch(80% 0.02 250);
+  --accent: oklch(85% 0.22 85); /* Glowing yellow-orange */
+  --accent-foreground: oklch(15% 0.05 250);
+  --destructive: oklch(55% 0.18 15);
+  --destructive-foreground: oklch(98% 0 0);
+  --border: oklch(100% 0 0 / 0.1);
+  --input: oklch(100% 0 0 / 0.1);
+  --ring: oklch(65% 0.25 300);
+  --radius: 2.5rem;
+  --sidebar: oklch(100% 0 0);
+  --sidebar-foreground: oklch(20% 0 0);
+  --sidebar-primary: oklch(75% 0.09 240);
+  --sidebar-primary-foreground: oklch(20% 0 0);
+  --sidebar-accent: oklch(85% 0.08 340);
+  --sidebar-accent-foreground: oklch(20% 0 0);
+  --sidebar-border: oklch(92% 0.01 240);
+  --sidebar-ring: oklch(75% 0.09 240);
+}
+
+.dark {
+  /* Consistent deep thermal aesthetic */
+  --background: oklch(10% 0.05 250);
+  --foreground: oklch(100% 0 0);
+  --card: oklch(100% 0 0 / 0.07);
+  --card-foreground: oklch(100% 0 0);
+  --popover: oklch(15% 0.04 250);
+  --popover-foreground: oklch(98% 0.01 250);
+  --primary: oklch(60% 0.3 330);
+  --primary-foreground: oklch(100% 0 0);
+  --secondary: oklch(85% 0.2 90);
+  --secondary-foreground: oklch(10% 0.05 250);
+  --muted: oklch(25% 0.05 250);
+  --muted-foreground: oklch(80% 0.02 250);
+  --accent: oklch(90% 0.08 340);
+  --accent-foreground: oklch(15% 0.05 240);
+  --destructive: oklch(55% 0.18 15);
+  --destructive-foreground: oklch(98% 0 0);
+  --border: oklch(100% 0 0 / 0.1);
+  --input: oklch(100% 0 0 / 0.1);
+  --ring: oklch(60% 0.3 330);
+  --chart-1: oklch(70% 0.15 340);
+  --chart-2: oklch(70% 0.15 240);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(20% 0 0);
+  --sidebar-foreground: oklch(95% 0 0);
+  --sidebar-primary: oklch(65% 0.09 211);
+  --sidebar-primary-foreground: oklch(95% 0 0);
+  --sidebar-accent: oklch(85% 0.065 47);
+  --sidebar-accent-foreground: oklch(15% 0 0);
+  --sidebar-border: oklch(30% 0 0);
+  --sidebar-ring: oklch(65% 0.09 211);
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, sans-serif;
+  /* Added a beautiful serif font for affirmations */
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/40;
+    /* Added a subtle star/noise effect to match the reference image atmosphere */
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+    overflow-x: hidden;
+  }
+  /* Applied serif font to headings and specialized text */
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Intensified aurora blobs to match the "thermal" heat-map glow from the image */
+.aurora-blob {
+  position: absolute;
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+.aurora-1 {
+  background: radial-gradient(circle, oklch(55% 0.25 240) 0%, transparent 70%); /* Glowing blue */
+  top: -20%;
+  left: -20%;
+  animation: aurora-1 15s ease-in-out infinite;
+}
+
+.aurora-2 {
+  background: radial-gradient(circle, oklch(60% 0.35 330) 0%, transparent 70%); /* Vivid magenta */
+  bottom: -15%;
+  right: -10%;
+  animation: aurora-2 20s ease-in-out infinite;
+}
+
+.aurora-3 {
+  background: radial-gradient(circle, oklch(85% 0.25 80) 0%, transparent 70%); /* Thermal orange-yellow */
+  top: 30%;
+  left: 20%;
+  animation: aurora-3 18s ease-in-out infinite;
+}
+
+/* implementing the animated mesh gradient background (Aurora effect) */
+@keyframes aurora-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30%, 20%) scale(1.2);
+  }
+  66% {
+    transform: translate(-20%, 40%) scale(0.8);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes aurora-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30%, -20%) scale(1.1);
+  }
+  66% {
+    transform: translate(40%, 10%) scale(0.9);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes aurora-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20%, -30%) scale(1.3);
+  }
+  66% {
+    transform: translate(-40%, 20%) scale(0.7);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.aurora-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--background);
+}
+
+/* Add custom animations for wellness app */
+@keyframes breathe-expand {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-breathe {
+  animation: breathe-expand 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
